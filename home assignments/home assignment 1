@@ -1,0 +1,59 @@
+#include<stdio.h>
+int main()
+{
+    int car, bus, motorcycle, traffic_load, slot, total_load=0, max=0;
+    int light_count=0, moderate_count=0, heavy_count=0, severe_count=0;
+    int conjtn_pnt=0;
+    scanf("%d", &slot);
+
+    for(int i=1; i<=slot; i++)
+    {
+        scanf("%d %d %d", &car, &bus, &motorcycle);
+        traffic_load = car + bus*3 + motorcycle;
+        total_load+=traffic_load;
+
+
+        if(traffic_load>=max)
+        max = traffic_load;
+
+
+        if(traffic_load < 30)
+        {
+            printf("Slot %d: LIGHT - Load %d\n", i, traffic_load);
+            light_count++;
+        }
+        else if(traffic_load < 60)
+        {
+            printf("Slot %d: MODERATE - Load %d\n", i, traffic_load);
+            moderate_count++;
+            conjtn_pnt+=2;
+        }
+        else if(traffic_load < 90)
+        {
+            printf("Slot %d: HEAVY - Load %d\n", i, traffic_load);
+            heavy_count++;
+            conjtn_pnt+=5;
+        }
+        else
+        {
+            printf("Slot %d: SEVERE - Load %d\n", i, traffic_load);
+            severe_count++;
+            conjtn_pnt+=8;
+        }
+        
+    }
+    printf("Total Load: %d\n", total_load);
+    printf("Highest Load: %d\n", max);
+    printf("Slot Counts: LIGHT %d, MODERATE %d, HEAVY %d, SEVERE %d\n",light_count,moderate_count,heavy_count,severe_count);
+    printf("Congestion Points: %d\n", conjtn_pnt);
+
+    if(severe_count>=1)
+    printf("Road Status: CRITICAL");
+    else if(heavy_count>=2)
+    printf("Road Status: CONGESTED");
+    else if(moderate_count>=2)
+    printf("Road Status: BUSY");
+    else
+    printf("Road Status: NORMAL");
+    return 0;
+}
