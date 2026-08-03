@@ -152,22 +152,22 @@ int main()
     printf("Invalid orders: %d\nTotal valid demand: %d\nTotal units sold: %d\n", invalid, ttl_dmnd, ttl_sld);
     printf("Lost demand: %d\nGross sales: %d\nTotal discount: %d\nNet revenue: %d\n", lst_dmnd, grs_sls, ttl_dis, net);
     if(mst_dmnd==0)
-    printf("Most demanded item: NONE");
+    printf("Most demanded item: NONE\n");
     else
     printf("Most demanded item: %d with %d units\n", mst_dmnd_code, mst_dmnd);
     if(mst_sld==0)
-    printf("Best-selling item: NONE");
+    printf("Best-selling item: NONE\n");
     else
     printf("Best-selling item: %d with %d units\n", mst_sld_code, mst_sld);
     if(h_rev==0)
-    printf("Highest-revenue item: NONE");
+    printf("Highest-revenue item: NONE\n");
     else
     printf("Highest-revenue item: %d with %d BDT\n", h_rev_code, h_rev);
     int p=1;
     printf("Items to restock:");
     for(int i=0; i<n; i++)
     {
-        if(stock[i]<=initial[i]*0.2)
+        if(stock[i]<=(int)initial[i]*0.2)
         {
             printf(" %d",itm_code[i]);
             p=0;
